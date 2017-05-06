@@ -7,6 +7,8 @@ function Misquad(img,nombre,apellido,edad,hobbies,hobbies2,hobbies3){
     this.hobbies = hobbies;
     this.hobbies2 = hobbies2;
     this.hobbies3 = hobbies3;
+    this.caja = "<input type='text' id='boton" + this.id + "'>"; //aca se ingresa el comentario
+    this.boton = "<button id='" + this.id + "' onclick='" + /*nuevoComentario.likes() +*/ "'>Dejar Comentario</button>"; //boton dejar comentario
 }
 
 var fran = new Misquad("x","Francisca","Ojeda",28,"Roller derby", "Lettering", "Juegos de mesa");
@@ -32,7 +34,7 @@ arrusuario.forEach(function(ele){
 
     var info = (ele.img+ "<br>" +"<b>Nombre: </b>"+ele.nombre+ " " +
          ele.apellido+ "<br>" + "<b>Edad : </b>"+  ele.edad+ "<br>"+ "<b>Hobbies : </b> <i>" + "<ul>" + "<li>" + ele.hobbies+ "</li>"+"<li>" +ele.hobbies2+ 
-         "</li>"+ "<li>"+ ele.hobbies3 + "</li></ul></i><br></b>"); 
+         "</li>"+ "<li>"+ ele.hobbies3 + "</li></ul></i><br></b>" + ele.caja + ele.boton); 
     divlistasquad.innerHTML += info;
 
 })
@@ -46,6 +48,23 @@ function agregarImagen()
   objDiv.appendChild(newImage);
 }
 
+//aca no he hecho nada
+function Comentario(id_miembro,comentario,likes){
+    this.id_miembro = id_miembro;
+    this.comentario = comentario;
+    this.likes = function(){
+        var contador = 0;
+        return (contador + 1);
+    };
+    this.botonLike = "<button onclick='" + this.likes() + "'></button>";
+}
+
+//esto no me funciona
+var miembro = document.getElementById("miembro0");
+var member = document.getElementById("m0");
+var coment = lista[0].caja.value;
+var nuevoComentario = new Comentario(miembro,coment);
+miembro.innerHTML = nuevoComentario.coment;
 
 var numero=0;
 function sumar (){ 
@@ -55,3 +74,4 @@ return numero;
 function hacerClick(){
     document.getElementById("caja").innerHTML = sumar();
 }
+
